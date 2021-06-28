@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { EditProfile, Home, Login, Menu, Profile, Register } from '../pages';
-import { DetailScreen, SplashScreen} from '../components'
+import { DetailScreen, HistoryComponent, SplashScreen} from '../components'
 
 const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => {
@@ -12,7 +12,8 @@ const DrawerNavigator = () => {
         <Drawer.Screen name="Menu" component={Menu} />
         <Drawer.Screen name="Profile" component={Profile} />
         <Drawer.Screen name="Register" component={Register} />
-        <Drawer.Screen name="Home" component={Home} /> 
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="History" component={HistoryComponent} /> 
       </Drawer.Navigator>
   );
 };
