@@ -26,8 +26,8 @@ const MenuContent = () => {
         <View style={styles.card}>
           <View style={{height: 130, alignItems: 'center'}}>
             <Image
-              style={{flex: 1, resizeMode: 'contain'}}
-              source={cars.Image}
+              style={{height:230, width:230, flex:1}} resizeMode="contain"
+              source={{uri :cars.Image}}
             />
           </View>
           <Text
