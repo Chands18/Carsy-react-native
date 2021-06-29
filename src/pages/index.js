@@ -6,6 +6,7 @@ import Splash from './Splash'
 import Profile from './Profile'
 import EditProfile from './EditProfile'
 import Details from './Details'
+import Booking from './Booking'
 
 export{
     Home,
@@ -16,4 +17,5 @@ export{
     Profile,
     EditProfile,
     Details,
+    Booking,
 }

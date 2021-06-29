@@ -6,6 +6,8 @@ import SplashScreen from './SplashScreen'
 import ProfileContent from './ProfileContent'
 import EditProfileContent from './EditProfileContent'
 import DetailScreen from './DetailScreen'
+import HistoryComponent from './HistoryComponent'
+import BookingDetail from './BookingDetail'
 
 export {
     HomeContent,
@@ -16,4 +18,6 @@ export {
     ProfileContent,
     EditProfileContent,
     DetailScreen,
+    HistoryComponent,
+    BookingDetail,
 }

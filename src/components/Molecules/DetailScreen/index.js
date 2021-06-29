@@ -10,15 +10,14 @@ import {
 import {icons, images} from '../../../assets';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Moment from 'moment';
-import { Picker } from "@react-native-picker/picker";
-import RNPickerSelect from 'react-native-picker-select'
+import RNPickerSelect from 'react-native-picker-select';
 
 const DetailScreen = ({navigation, route}) => {
-    var date = new Date();
-    const formattedDate = Moment(date).format('yyyy-MM-DD');
-    const [birthdate, set_birthdate] = useState(formattedDate);
-    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-    const [Enable , setEnable]  = useState("with driver");
+  var date = new Date();
+  const formattedDate = Moment(date).format('yyyy-MM-DD');
+  const [birthdate, set_birthdate] = useState(formattedDate);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [Enable, setEnable] = useState('with driver');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -28,7 +27,7 @@ const DetailScreen = ({navigation, route}) => {
     setDatePickerVisibility(false);
   };
 
-  const handleConfirm = (date) => {
+  const handleConfirm = date => {
     console.warn('A date has been picked: ', date);
     hideDatePicker();
   };
@@ -41,7 +40,7 @@ const DetailScreen = ({navigation, route}) => {
         </TouchableOpacity>
       </View>
       <View style={styles.imagecontainer}>
-        <Image source={cars.Image} style={{resizeMode: 'contain', flex: 1}} />
+        <Image source={{uri: cars.Image}} style={{height:300, width:300, flex:1}} resizeMode="contain" />
       </View>
       <View style={styles.detailscontainer}>
         <View
@@ -85,14 +84,13 @@ const DetailScreen = ({navigation, route}) => {
               <Text style={styles.borderBtnText}>{cars.fuel}</Text>
             </View>
             <View style={styles.borderBtn}>
-              <RNPickerSelect 
-            onValueChange={(value) => console.log(value)}
-            items={[
-                { label: 'With Driver', value: 'With Driver' },
-                { label: 'Without Driver', value: 'Without Driver' },
-            ]}
-        />
-              {/* <Text style={styles.borderBtnText}>with driver</Text> */}
+              <RNPickerSelect
+                onValueChange={value => console.log(value)}
+                items={[
+                  {label: 'With Driver', value: 'With Driver'},
+                  {label: 'Without Driver', value: 'Without Driver'},
+                ]}
+              />
             </View>
           </View>
           <View
@@ -107,31 +105,34 @@ const DetailScreen = ({navigation, route}) => {
                 alignItems: 'center',
               }}>
               <View style={styles.borderBtn}>
-                  <Image style={{resizeMode:'contain', flex:1}} source={images.img_calendar} />
-        <TouchableOpacity
-          style={{width: '100%'}}
-          onPress={() => {
-              setDatePickerVisibility(true);
-            }}>
-          <Text style={styles.datetext}>
-            {Moment(date).format('yyyy-MM-DD')}
-          </Text>
-        </TouchableOpacity>
-        {isDatePickerVisible && (
-          <DateTimePicker
-            value={new Date(date)}
-            mode="date"
-            display="default"
-            onChange={(val, newValue) => {
-              var newDate = Moment(newValue).format('yyyy-MM-DD');
-              set_birthdate(newDate);
-              setDatePickerVisibility(false);
-            }}
-          />
-        )}
+                <Image
+                  style={{resizeMode: 'contain', flex: 1}}
+                  source={images.img_calendar}
+                />
+                <TouchableOpacity
+                  style={{width: '100%'}}
+                  onPress={() => {
+                    setDatePickerVisibility(true);
+                  }}>
+                  <Text style={styles.datetext}>
+                    {Moment(date).format('yyyy-MM-DD')}
+                  </Text>
+                </TouchableOpacity>
+                {isDatePickerVisible && (
+                  <DateTimePicker
+                    value={new Date(date)}
+                    mode="date"
+                    display="default"
+                    onChange={(val, newValue) => {
+                      var newDate = Moment(newValue).format('yyyy-MM-DD');
+                      set_birthdate(newDate);
+                      setDatePickerVisibility(false);
+                    }}
+                  />
+                )}
               </View>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> navigation.navigate('Booking')}>
               <View style={styles.buyBtn}>
                 <Text
                   style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>
@@ -153,7 +154,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 20,
     flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   imagecontainer: {
     flex: 0.35,
@@ -179,8 +179,8 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 25,
   },
   borderBtn: {
-    backgroundColor:'lightseagreen',
-    elevation:10,
+    backgroundColor: 'lightseagreen',
+    elevation: 10,
     borderWidth: 0.4,
     borderRadius: 5,
     justifyContent: 'center',
@@ -198,12 +198,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 30,
   },
-  datetext:{
-    textAlign:'center',
-    textAlignVertical:'center',
+  datetext: {
+    textAlign: 'center',
+    textAlignVertical: 'center',
     width: 100,
-    backgroundColor:'transparent',
-    borderRadius:8,
-    height:20
-  }
+    backgroundColor: 'transparent',
+    borderRadius: 8,
+    height: 20,
+  },
 });
